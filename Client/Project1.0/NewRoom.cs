@@ -29,6 +29,7 @@ namespace Project1._0
             username = us;
             clientSocket = cl;
             serverStream = ns;
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         private void btn_back_nroom_Click(object sender, EventArgs e)
@@ -43,14 +44,14 @@ namespace Project1._0
 
         private void btn_create_Click(object sender, EventArgs e)
         {
+            checkw = true;
             byte[] outStream = Encoding.UTF8.GetBytes("3\n" + box_code.Text + "\n" + "$");
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
 
-            CheckForIllegalCrossThreadCalls = false;
-            Thread ctThread = new Thread(getMessage);
             if (check == false)
             {
+                Thread ctThread = new Thread(getMessage);
                 ctThread.Start();
             }
             check = true;
@@ -59,9 +60,6 @@ namespace Project1._0
             {
                 if(refromServer)
                 {
-#pragma warning disable SYSLIB0006 // Type or member is obsolete
-                    ctThread.Abort();
-#pragma warning restore SYSLIB0006 // Type or member is obsolete
                     Ve ve = new Ve(username, clientSocket, serverStream, box_code.Text);
                     ve.Show();
                     this.Close();
@@ -82,6 +80,7 @@ namespace Project1._0
                 if (readData == "True")
                 {
                     refromServer = true;
+                    break;
                 }
                 if (readData == "False")
                 {
