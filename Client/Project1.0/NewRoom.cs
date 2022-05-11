@@ -45,7 +45,7 @@ namespace Project1._0
         private void btn_create_Click(object sender, EventArgs e)
         {
             checkw = true;
-            byte[] outStream = Encoding.UTF8.GetBytes("3\n" + box_code.Text + "\n" + "$");
+            byte[] outStream = Encoding.UTF8.GetBytes("3\n" + "$");
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
 
@@ -60,7 +60,7 @@ namespace Project1._0
             {
                 if(refromServer)
                 {
-                    Ve ve = new Ve(username, clientSocket, serverStream, box_code.Text);
+                    Ve ve = new Ve(username, clientSocket, serverStream, readData);
                     ve.Show();
                     this.Close();
                     break;
@@ -75,16 +75,16 @@ namespace Project1._0
                 serverStream = clientSocket.GetStream();
                 byte[] inStream = new byte[10025];
                 serverStream.Read(inStream, 0, inStream.Length);
-                string returndata = Encoding.UTF8.GetString(inStream);
+                string returndata = Encoding.UTF8.GetString(inStream).Replace("\0", string.Empty); ;
                 readData = "" + returndata;
-                if (readData == "True")
+                if (readData != "False")
                 {
                     refromServer = true;
                     break;
                 }
                 if (readData == "False")
                 {
-                    MessageBox.Show("Ma phong da ton tai.");
+                    MessageBox.Show("Server bi loi, mong ban thong cam.");
                     checkw = false;
                 }
             }
