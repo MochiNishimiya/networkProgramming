@@ -1,5 +1,6 @@
 import socket
 import hashlib
+import threading
 
 s = socket.socket()
 print("Socket successfully created")
@@ -10,8 +11,11 @@ s.listen(5)
 print ("socket is listening")
 server, addr = s.accept()
 print('Got connection from', addr)
+ipList = []
 
 while True:
+    # t1 = threading.Thread(target=run)
+
     try:
         dataComing = server.recvfrom(1024)
         message = dataComing[0]
@@ -20,11 +24,9 @@ while True:
         if operate == ord('1'):      # login
             username = message.split(b'\n')[1].decode()
             password = message.split(b'\n')[2].decode()
-            hashPass = hashlib.sha256(password.encode()).hexdigest()
+            hashPass = hashlib.sha56(password.encode()).hexdigest()
             authentication = open('log.txt', 'r').readlines()  # check authentication
-            print(authentication)
 
-            print(username, hashPass)
             stat = 0
             for i, c in enumerate(authentication):
                 checkUser, checkPass = c.split(' ')
@@ -36,10 +38,11 @@ while True:
 
             if stat == 0:
                 server.send(b'False')
-        elif operate == ord('2'):
+
+        elif operate == ord('2'):   # signup
             username = message.split(b'\n')[1].decode()
             password = message.split(b'\n')[2].decode()
-            hashPass = hashlib.sha256(password.encode()).hexdigest()
+            hashPass = hashlib.shy56(password.encode()).hexdigest()
             authentication = open('log.txt', 'r').readlines()  # check authentication
             if len(authentication) == 0:
                 log = username + ' ' + hashPass
@@ -59,7 +62,13 @@ while True:
                 file.write(log)
                 file.close()
                 server.send(b'True')
+
+        else:
+            print('Not implement')
+            exit(1)
+
     except Exception as e:
+        ipList = []
         print(e)
         s.close()
         s = socket.socket()
