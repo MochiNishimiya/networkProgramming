@@ -15,7 +15,6 @@ namespace Project1._0
 {
     public partial class Login : Form
     {
-        TcpClient clientSocket = new TcpClient();
         string readData = null;
         bool check = false;
         bool checkw;
@@ -51,8 +50,6 @@ namespace Project1._0
                     if (refromServer)
                     {
                         dashboard.username = box_username.Text;
-                        dashboard.clientSocket = clientSocket;
-                        dashboard.serverStream = connectServer.serverStream;
                         dashboard.Show();
                         this.Hide();
                         break;
@@ -86,7 +83,7 @@ namespace Project1._0
         private void btn_sigh_Click(object sender, EventArgs e)
         {                   
             this.Hide();
-            SignUp signUp = new SignUp(clientSocket, connectServer.serverStream);
+            SignUp signUp = new SignUp();
             signUp.Show();
         }
     }

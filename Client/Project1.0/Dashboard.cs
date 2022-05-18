@@ -20,8 +20,6 @@ namespace Project1._0
             InitializeComponent();
         }
 
-        public TcpClient clientSocket;
-        public NetworkStream serverStream;
         public string username;
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -32,7 +30,7 @@ namespace Project1._0
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            NewRoom newRoom = new NewRoom(username,clientSocket,serverStream);
+            NewRoom newRoom = new NewRoom(username);
             newRoom.Show();
             this.Close();
         }
@@ -40,7 +38,7 @@ namespace Project1._0
         private void btn_join_Click(object sender, EventArgs e)
         {
             this.Hide();
-            JoinRoom joinRoom = new JoinRoom(username, clientSocket, serverStream);
+            JoinRoom joinRoom = new JoinRoom(username, connectServer.clientSocket, connectServer.serverStream);
             joinRoom.Show();
             this.Close();
         }

@@ -18,14 +18,11 @@ namespace Project1._0
         bool check = false;
         bool checkthread = false;
         bool checkw;
-        TcpClient clientSocket;
         string readData;
 
-        public SignUp(TcpClient cl, NetworkStream ns)
+        public SignUp()
         {
             InitializeComponent();
-            clientSocket = cl;
-            connectServer.serverStream = ns;
             CheckForIllegalCrossThreadCalls = false;
         }
 

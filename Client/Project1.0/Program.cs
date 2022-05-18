@@ -22,7 +22,7 @@ namespace Project1._0
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             connectServer.clientSocket = new TcpClient();
-            connectServer.clientSocket.Connect(IPAddress.Parse("10.45.182.205"), 8080);   // Modified this
+            connectServer.clientSocket.Connect(IPAddress.Parse("127.0.0.1"), 8080);   // Modified this
             connectServer.serverStream = connectServer.clientSocket.GetStream();
 
             ApplicationConfiguration.Initialize();

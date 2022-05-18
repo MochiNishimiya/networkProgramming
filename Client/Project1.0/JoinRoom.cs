@@ -35,8 +35,6 @@ namespace Project1._0
         {
             Dashboard dashboard = new Dashboard();
             dashboard.username = username;
-            dashboard.clientSocket = clientSocket;
-            dashboard.serverStream = serverStream;
             dashboard.Show();
             this.Close();
         }

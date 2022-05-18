@@ -17,18 +17,14 @@ namespace Project1._0
     {
 
         public string username;
-        TcpClient clientSocket;
-        NetworkStream serverStream;
         string readData;
         bool checkw = true;
         bool refromServer = false;
         bool check = false;
-        public NewRoom(string us, TcpClient cl, NetworkStream ns)
+        public NewRoom(string us)
         {
             InitializeComponent();
             username = us;
-            clientSocket = cl;
-            serverStream = ns;
             CheckForIllegalCrossThreadCalls = false;
         }
 
@@ -36,8 +32,6 @@ namespace Project1._0
         {
             Dashboard dashboard = new Dashboard();
             dashboard.username = username;
-            dashboard.clientSocket = clientSocket;
-            dashboard.serverStream = serverStream;
             dashboard.Show();
             this.Close();
         }
@@ -46,8 +40,8 @@ namespace Project1._0
         {
             checkw = true;
             byte[] outStream = Encoding.UTF8.GetBytes("3\n" + "$");
-            serverStream.Write(outStream, 0, outStream.Length);
-            serverStream.Flush();
+            connectServer.serverStream.Write(outStream, 0, outStream.Length);
+            connectServer.serverStream.Flush();
 
             if (check == false)
             {
@@ -60,7 +54,7 @@ namespace Project1._0
             {
                 if(refromServer)
                 {
-                    Ve ve = new Ve(username, clientSocket, serverStream, readData);
+                    Ve ve = new Ve(username, connectServer.clientSocket, connectServer.serverStream, readData);
                     ve.Show();
                     this.Close();
                     break;
@@ -72,9 +66,9 @@ namespace Project1._0
         {
             while (true)
             {
-                serverStream = clientSocket.GetStream();
+                connectServer.serverStream = connectServer.clientSocket.GetStream();
                 byte[] inStream = new byte[10025];
-                serverStream.Read(inStream, 0, inStream.Length);
+                connectServer.serverStream.Read(inStream, 0, inStream.Length);
                 string returndata = Encoding.UTF8.GetString(inStream).Replace("\0", string.Empty); ;
                 readData = "" + returndata;
                 if (readData != "False")
