@@ -42,7 +42,7 @@
             this.btn_sigh.BackColor = System.Drawing.Color.Firebrick;
             this.btn_sigh.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_sigh.ForeColor = System.Drawing.Color.White;
-            this.btn_sigh.Location = new System.Drawing.Point(148, 338);
+            this.btn_sigh.Location = new System.Drawing.Point(133, 338);
             this.btn_sigh.Name = "btn_sigh";
             this.btn_sigh.Size = new System.Drawing.Size(225, 45);
             this.btn_sigh.TabIndex = 14;
@@ -54,7 +54,7 @@
             // box_pass
             // 
             this.box_pass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.box_pass.Location = new System.Drawing.Point(81, 243);
+            this.box_pass.Location = new System.Drawing.Point(66, 243);
             this.box_pass.Name = "box_pass";
             this.box_pass.Size = new System.Drawing.Size(377, 34);
             this.box_pass.TabIndex = 12;
@@ -62,7 +62,7 @@
             // box_username
             // 
             this.box_username.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.box_username.Location = new System.Drawing.Point(81, 156);
+            this.box_username.Location = new System.Drawing.Point(66, 156);
             this.box_username.Name = "box_username";
             this.box_username.Size = new System.Drawing.Size(377, 34);
             this.box_username.TabIndex = 11;
@@ -73,7 +73,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Gabriola", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Brown;
-            this.label3.Location = new System.Drawing.Point(81, 194);
+            this.label3.Location = new System.Drawing.Point(66, 194);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 51);
             this.label3.TabIndex = 10;
@@ -85,7 +85,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Gabriola", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Brown;
-            this.label2.Location = new System.Drawing.Point(81, 103);
+            this.label2.Location = new System.Drawing.Point(66, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 51);
             this.label2.TabIndex = 9;
@@ -97,7 +97,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Gabriola", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
-            this.label1.Location = new System.Drawing.Point(157, -7);
+            this.label1.Location = new System.Drawing.Point(142, -7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(216, 110);
             this.label1.TabIndex = 8;
@@ -109,7 +109,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(527, 632);
+            this.ClientSize = new System.Drawing.Size(502, 632);
             this.Controls.Add(this.btn_sigh);
             this.Controls.Add(this.box_pass);
             this.Controls.Add(this.box_username);
