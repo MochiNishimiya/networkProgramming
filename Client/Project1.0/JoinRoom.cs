@@ -42,7 +42,7 @@ namespace Project1._0
         private void btn_join_Click(object sender, EventArgs e)
         {
             checkw = true;
-            byte[] outStream = Encoding.UTF8.GetBytes("3\n" + box_code.Text + "\n" + "$");
+            byte[] outStream = Encoding.UTF8.GetBytes("4\n" + box_code.Text + "\n" + "$");
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
 
@@ -81,7 +81,7 @@ namespace Project1._0
                 }
                 if (readData == "False")
                 {
-                    MessageBox.Show("Ma phong khong ton tai.");
+                    MessageBox.Show("Ma phong khong ton tai hoac ban khong duoc phep vao phong.");
                     checkw = false;
                 }
             }

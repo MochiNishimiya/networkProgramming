@@ -49,11 +49,14 @@
             this.btnFill = new System.Windows.Forms.Button();
             this.btnPencil = new System.Windows.Forms.Button();
             this.btnEraser = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pic = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colorPicker)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -187,7 +190,7 @@
             this.btclear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btclear.ForeColor = System.Drawing.Color.White;
             this.btclear.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btclear.Location = new System.Drawing.Point(1290, 71);
+            this.btclear.Location = new System.Drawing.Point(1300, 55);
             this.btclear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btclear.Name = "btclear";
             this.btclear.Size = new System.Drawing.Size(58, 27);
@@ -206,7 +209,7 @@
             this.btsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btsave.ForeColor = System.Drawing.Color.White;
             this.btsave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btsave.Location = new System.Drawing.Point(1290, 29);
+            this.btsave.Location = new System.Drawing.Point(1300, 13);
             this.btsave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btsave.Name = "btsave";
             this.btsave.Size = new System.Drawing.Size(58, 27);
@@ -393,22 +396,54 @@
             this.btnEraser.UseVisualStyleBackColor = false;
             this.btnEraser.Click += new System.EventHandler(this.btnEraser_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(1151, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "CODE: ";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 542);
+            this.panel2.Location = new System.Drawing.Point(0, 528);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1370, 20);
+            this.panel2.Size = new System.Drawing.Size(1370, 34);
             this.panel2.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(1290, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(58, 27);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Exit";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pic
             // 
-            this.pic.Location = new System.Drawing.Point(0, 115);
+            this.pic.Location = new System.Drawing.Point(1, 115);
             this.pic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(1370, 585);
+            this.pic.Size = new System.Drawing.Size(1370, 599);
             this.pic.TabIndex = 2;
             this.pic.TabStop = false;
             this.pic.Paint += new System.Windows.Forms.PaintEventHandler(this.pic_Paint);
@@ -433,6 +468,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colorPicker)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.ResumeLayout(false);
 
@@ -462,5 +499,7 @@
         private Button btnText;
         private ComboBox listFont;
         private ComboBox sizebox;
+        private Label label1;
+        private Button button1;
     }
 }

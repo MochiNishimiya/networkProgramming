@@ -19,7 +19,7 @@ namespace Project1._0
         public Ve(string us, TcpClient cl, NetworkStream ns, string c)
         {
             InitializeComponent();
-            this.Width = 1920;
+            this.Width = 1900;
             this.Height = 1080;
             bm = new Bitmap(pic.Width, pic.Height);
             g = Graphics.FromImage(bm);
@@ -30,6 +30,8 @@ namespace Project1._0
             clientSocket = cl;
             serverStream = ns;
             code = c;
+            CheckForIllegalCrossThreadCalls = false;
+            label1.Text += c;
         }
 
         string username;
@@ -39,6 +41,7 @@ namespace Project1._0
         Bitmap bm;
         Graphics g;
         bool paint = false;
+        bool run = false;
         Point Px, Py;
         Pen P = new Pen(Color.Black, 1);
         int index;
@@ -134,7 +137,8 @@ namespace Project1._0
             {
                 Point point = set_point(pic,e.Location);
                 Fill(bm, point.X, point.Y, new_color);
-            }    
+            }
+            run = true;
         }
 
         private void btsave_Click(object sender, EventArgs e)
@@ -152,6 +156,7 @@ namespace Project1._0
         {
             g.Clear(Color.White);
             //pic.Image = bm;
+            run = true;
 
         }
 
@@ -191,10 +196,10 @@ namespace Project1._0
             }
             listFont.SelectedItem = "Arial";
             sizebox.SelectedItem = "8";
-            Thread threadsend = new Thread(sendMessage);
             Thread threadget = new Thread(getMessage);
-            threadsend.Start();
+            Thread threadsend = new Thread(sendMessage);
             threadget.Start();
+            threadsend.Start();
         }
 
         private void listFont_SelectedIndexChanged(object sender, EventArgs e)
@@ -227,6 +232,7 @@ namespace Project1._0
                     Px = e.Location;
                     g.DrawLine(P, Px, Py);
                     Py = Px;
+                    run = true;
                 }
                 // Erase
                 if (index == 2)
@@ -234,6 +240,7 @@ namespace Project1._0
                     Px = e.Location;
                     g.DrawLine(E, Px, Py);
                     Py = Px;
+                    run = true;
                 }
             }
             pic.Refresh();
@@ -255,23 +262,33 @@ namespace Project1._0
             if(index == 3)
             {
                 g.DrawEllipse(P,cX,cY,sX,sY);
+                run = true;
             }
 
             // Rectangle
             if (index == 4)
             {
                 g.DrawRectangle(P, cX, cY, sX, sY);
+                run = true;
             }
 
             if (index == 5)
             {
                 g.DrawLine(P, cX, cY, x, y);
+                run = true;
             }
 
             if (index == 8)
             {
                 g.DrawString(contentText.Text, ff, drawBrush, cX, cY);
+                run = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
         }
 
         static Point set_point(PictureBox pb, Point pt)
@@ -334,17 +351,20 @@ namespace Project1._0
             return (byte[])converter.ConvertTo(img, typeof(byte[]));
         }
 
-        private void sendMessage()
+        public void sendMessage()
         {
             while (true)
             {
-                Thread.Sleep(500);
-                Byte[] outStream = null;
-                Bitmap btm = bm.Clone(new Rectangle(0, 0, pic.Width, pic.Height), bm.PixelFormat);
-                outStream = ImageToByte(btm);
-                serverStream.Write(outStream, 0, outStream.Length);
-                serverStream.Flush();
-            }    
+                if (run)
+                {
+                    Byte[] outStream = null;
+                    Bitmap btm = bm.Clone(new Rectangle(0, 0, pic.Width, pic.Height), bm.PixelFormat);
+                    outStream = ImageToByte(btm);
+                    connectServer.serverStream.Write(outStream, 0, outStream.Length);
+                    connectServer.serverStream.Flush();
+                    run = false;
+                }
+            }
         }
     }
 }

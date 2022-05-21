@@ -26,12 +26,6 @@ namespace Project1._0
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        private void btn_login_Click(object sender, EventArgs e)
-        {
-            Program.lg.Show();
-            this.Close();
-        }
-
         private void btn_sigh_Click(object sender, EventArgs e)
         {
             checkw = true;
@@ -54,6 +48,8 @@ namespace Project1._0
                 {
                     if (checkthread)
                     {
+                        Program.lg.Show();
+                        this.Close();
                         // ctThread.Interrupt();
                         break;
                     }
@@ -83,5 +79,11 @@ namespace Project1._0
                     }    
                 }
             }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Program.lg.Show();
+            this.Close();
+        }
     }
 }
