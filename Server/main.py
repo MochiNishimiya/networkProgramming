@@ -12,10 +12,15 @@ print ("socket is listening")
 server, addr = s.accept()
 print('Got connection from', addr)
 global ipList
+global vis
 ipList = []
+vis = [0] * 1000    # room limited
 
 def run(server, addr):
     global ipList
+    global vis
+    roomId = -1
+
     while True:
         try:
             dataComing = server.recvfrom(1024)
@@ -75,9 +80,16 @@ def run(server, addr):
                         break
 
                 if stat == 0:
+                    id = 0
+                    while (vis[id] == 1): id += 1
+                    vis[id] = 1
+                    roomId = id
                     ipList.append(addr)
-                    server.send(b'True')
+                    server.send(str(roomId).encode())
 
+            elif operate == ord('4'):
+                roomId = int(message.split(b'\n')[1])
+                server.send(b'True')
 
             else:
                 print('Not implement')
@@ -86,6 +98,17 @@ def run(server, addr):
         except Exception as e:
             print(e)
             break
+
+    print(ipList)
+    print(vis[:50])
+    for i in range(len(ipList)):
+        if (ipList[i] == addr):
+            ipList.pop(i)
+            break
+    if roomId != -1:
+        vis[roomId] = 0
+    print(ipList)
+    print(vis[:50])
 
     print('Exiting...')
 
