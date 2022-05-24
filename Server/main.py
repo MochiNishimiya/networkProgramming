@@ -14,16 +14,18 @@ print('Got connection from', addr)
 global ipList
 global vis
 ipList = []
+idRoomList = []
 vis = [0] * 1000    # room limited
 
 def run(server, addr):
     global ipList
     global vis
     roomId = -1
+    bitmap = b''
 
     while True:
         try:
-            dataComing = server.recvfrom(1024)
+            dataComing = server.recvfrom(100000)
             message = dataComing[0]
             operate = message[0]
 
@@ -85,30 +87,40 @@ def run(server, addr):
                     vis[id] = 1
                     roomId = id
                     ipList.append(addr)
+                    idRoomList.append(id)
                     server.send(str(roomId).encode())
 
-            elif operate == ord('4'):
+            elif operate == ord('4'):  # Join Room
                 roomId = int(message.split(b'\n')[1])
                 server.send(b'True')
 
+            elif message[:4] == b'\x89PNG':   # Drawing
+                bitmap = message
+                for i in range(len(ipList)):
+                    if idRoomList[i] == roomId and ipList[i] != addr:
+                        port = ipList[i][1]
+                        address = ipList[i][0]
+                        s0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                        s0.connect((address, port))
+                        s0.send(bitmap)
+                        s0.close()
+
             else:
+                print(dataComing)
                 print('Not implement')
-                exit(1)
+                break
 
         except Exception as e:
             print(e)
             break
 
-    print(ipList)
-    print(vis[:50])
     for i in range(len(ipList)):
         if (ipList[i] == addr):
             ipList.pop(i)
+            idRoomList.pop(i)
             break
     if roomId != -1:
         vis[roomId] = 0
-    print(ipList)
-    print(vis[:50])
 
     print('Exiting...')
 
