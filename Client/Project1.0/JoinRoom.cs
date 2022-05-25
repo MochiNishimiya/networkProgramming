@@ -72,7 +72,7 @@ namespace Project1._0
                 serverStream = clientSocket.GetStream();
                 byte[] inStream = new byte[10025];
                 serverStream.Read(inStream, 0, inStream.Length);
-                string returndata = Encoding.UTF8.GetString(inStream);
+                string returndata = Encoding.UTF8.GetString(inStream).Replace("\0", string.Empty); ;
                 readData = "" + returndata;
                 if (readData == "True")
                 {

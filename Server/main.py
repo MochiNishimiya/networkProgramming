@@ -13,8 +13,10 @@ server, addr = s.accept()
 print('Got connection from', addr)
 global ipList
 global vis
+global sList
 ipList = []
 idRoomList = []
+sList = []
 vis = [0] * 1000    # room limited
 
 def run(server, addr):
@@ -88,22 +90,27 @@ def run(server, addr):
                     roomId = id
                     ipList.append(addr)
                     idRoomList.append(id)
+                    sList.append(server)
                     server.send(str(roomId).encode())
 
             elif operate == ord('4'):  # Join Room
+                print(message)
                 roomId = int(message.split(b'\n')[1])
+                ipList.append(addr)
+                idRoomList.append(roomId)
+                sList.append(server)
                 server.send(b'True')
 
             elif message[:4] == b'\x89PNG':   # Drawing
+                print(message)
+                print('address:', addr)
+                print('ipList: ',ipList)
+                print('idRoomList: ',idRoomList)
                 bitmap = message
                 for i in range(len(ipList)):
-                    if idRoomList[i] == roomId and ipList[i] != addr:
-                        port = ipList[i][1]
-                        address = ipList[i][0]
-                        s0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                        s0.connect((address, port))
-                        s0.send(bitmap)
-                        s0.close()
+                    if idRoomList[i] == roomId and (ipList[i][0] != addr[0] or ipList[i][1] != addr[1]):
+                        print(i)
+                        sList[i].send(bitmap)
 
             else:
                 print(dataComing)
@@ -111,16 +118,15 @@ def run(server, addr):
                 break
 
         except Exception as e:
-            print(e)
+            print(e, addr)
             break
 
     for i in range(len(ipList)):
         if (ipList[i] == addr):
             ipList.pop(i)
             idRoomList.pop(i)
+            sList.pop(i)
             break
-    if roomId != -1:
-        vis[roomId] = 0
 
     print('Exiting...')
 
