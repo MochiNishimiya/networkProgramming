@@ -53,6 +53,7 @@ namespace Project1._0
         int SizeFont = 8;
         Font ff = new Font("Arial", 1);
         SolidBrush drawBrush = new SolidBrush(Color.Black);
+        PictureBox piclone;
 
         private void btnLine_Click(object sender, EventArgs e)
         {
@@ -137,8 +138,9 @@ namespace Project1._0
             {
                 Point point = set_point(pic,e.Location);
                 Fill(bm, point.X, point.Y, new_color);
+                run = true;
             }
-            run = true;
+            //piclone = pic;
         }
 
         private void btsave_Click(object sender, EventArgs e)
@@ -155,9 +157,8 @@ namespace Project1._0
         private void btclear_Click(object sender, EventArgs e)
         {
             g.Clear(Color.White);
-            //pic.Image = bm;
+            pic.Image = bm;
             run = true;
-
         }
 
         private void boxsize_SelectedIndexChanged(object sender, EventArgs e)
@@ -198,8 +199,10 @@ namespace Project1._0
             sizebox.SelectedItem = "8";
             Thread threadget = new Thread(getMessage);
             Thread threadsend = new Thread(sendMessage);
+            //Thread threadcon = new Thread(con);
             threadget.Start();
             threadsend.Start();
+            //threadcon.Start();
         }
 
         private void listFont_SelectedIndexChanged(object sender, EventArgs e)
@@ -232,7 +235,6 @@ namespace Project1._0
                     Px = e.Location;
                     g.DrawLine(P, Px, Py);
                     Py = Px;
-                    run = true;
                 }
                 // Erase
                 if (index == 2)
@@ -240,7 +242,6 @@ namespace Project1._0
                     Px = e.Location;
                     g.DrawLine(E, Px, Py);
                     Py = Px;
-                    run = true;
                 }
             }
             pic.Refresh();
@@ -255,39 +256,39 @@ namespace Project1._0
         {
             paint = false;
 
-            sX = x - cX;
+            sX = x - cX;    
             sY = y - cY;
 
             // Ellipse
             if(index == 3)
             {
                 g.DrawEllipse(P,cX,cY,sX,sY);
-                run = true;
+                //bm = (Bitmap)pic.Image;
             }
 
             // Rectangle
             if (index == 4)
             {
                 g.DrawRectangle(P, cX, cY, sX, sY);
-                run = true;
+                //bm = (Bitmap)pic.Image;
             }
 
             if (index == 5)
             {
                 g.DrawLine(P, cX, cY, x, y);
-                run = true;
+                //bm = (Bitmap)pic.Image;
             }
 
             if (index == 8)
             {
                 g.DrawString(contentText.Text, ff, drawBrush, cX, cY);
-                run = true;
+                //bm = (Bitmap)pic.Image;
             }
+            run = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
             Application.Exit();
         }
 
@@ -356,6 +357,8 @@ namespace Project1._0
                 {
                     bmp = new Bitmap(ms);
                 }
+                pic.Image = bmp;
+                bm = bmp;
                 g = Graphics.FromImage(bmp);
             }
         }
@@ -372,7 +375,9 @@ namespace Project1._0
             {
                 if (run)
                 {
+                    //piclone.Image = pic.Image;
                     Byte[] outStream = null;
+                    //Bitmap btm = (Bitmap)piclone.Image;
                     Bitmap btm = bm.Clone(new Rectangle(0, 0, pic.Width, pic.Height), bm.PixelFormat);
                     outStream = ImageToByte(btm);
                     connectServer.serverStream.Write(outStream, 0, outStream.Length);
