@@ -86,5 +86,7 @@ namespace Project1._0
             SignUp signUp = new SignUp();
             signUp.Show();
         }
+
+        
     }
 }

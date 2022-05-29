@@ -299,6 +299,11 @@ namespace Project1._0
             return new Point((int)(pt.X*Px),(int)(pt.Y*Py));
         }
 
+        private void Guide(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hello, welcome to our app. I am knowing that you don't know how to use our excellent app :)) So I'm here to show you how to use. Select color that you want then select drawing tool relevant for you. And then draw :v Remember that other people in this room can see what you draw. ");
+        }
+
         private void validate(Bitmap bm, Stack<Point> sp, int x, int y, Color o_color, Color n_color)
         {
             Color cx = bm.GetPixel(x, y);

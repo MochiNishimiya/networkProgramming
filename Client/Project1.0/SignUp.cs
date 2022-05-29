@@ -67,7 +67,7 @@ namespace Project1._0
                     readData = "" + returndata;
                     if(readData == "False")
                     {
-                        MessageBox.Show("existing account. Please select another username/password");
+                        MessageBox.Show("Existing account. Please select another username/password");
                         checkw = false;
                     }
                     if(readData == "True")
@@ -85,5 +85,6 @@ namespace Project1._0
             Program.lg.Show();
             this.Close();
         }
+
     }
 }

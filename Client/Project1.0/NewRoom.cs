@@ -28,14 +28,6 @@ namespace Project1._0
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        private void btn_back_nroom_Click(object sender, EventArgs e)
-        {
-            Dashboard dashboard = new Dashboard();
-            dashboard.username = username;
-            dashboard.Show();
-            this.Close();
-        }
-
         private void btn_create_Click(object sender, EventArgs e)
         {
             checkw = true;

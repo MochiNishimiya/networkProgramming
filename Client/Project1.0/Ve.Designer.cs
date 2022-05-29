@@ -57,6 +57,7 @@
             this.txtBox = new System.Windows.Forms.TextBox();
             this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.joinBtn = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colorPicker)).BeginInit();
             this.panel3.SuspendLayout();
@@ -67,6 +68,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.sizebox);
             this.panel1.Controls.Add(this.listFont);
             this.panel1.Controls.Add(this.contentText);
@@ -199,14 +201,14 @@
             this.btclear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btclear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
             this.btclear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btclear.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btclear.ForeColor = System.Drawing.Color.White;
             this.btclear.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btclear.Location = new System.Drawing.Point(1486, 73);
+            this.btclear.Location = new System.Drawing.Point(1486, 59);
             this.btclear.Name = "btclear";
             this.btclear.Size = new System.Drawing.Size(66, 36);
             this.btclear.TabIndex = 11;
             this.btclear.Text = "Clear";
-            this.btclear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btclear.UseVisualStyleBackColor = false;
             this.btclear.Click += new System.EventHandler(this.btclear_Click);
             // 
@@ -217,6 +219,7 @@
             this.btsave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btsave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
             this.btsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btsave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btsave.ForeColor = System.Drawing.Color.White;
             this.btsave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btsave.Location = new System.Drawing.Point(1486, 17);
@@ -224,7 +227,6 @@
             this.btsave.Size = new System.Drawing.Size(66, 36);
             this.btsave.TabIndex = 10;
             this.btsave.Text = "Save";
-            this.btsave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btsave.UseVisualStyleBackColor = false;
             this.btsave.Click += new System.EventHandler(this.btsave_Click);
             // 
@@ -497,6 +499,24 @@
             this.joinBtn.Text = "JOIN CHATROOM";
             this.joinBtn.UseVisualStyleBackColor = false;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.Location = new System.Drawing.Point(1486, 101);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(66, 36);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Guide";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.Guide);
+            // 
             // Ve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -554,5 +574,6 @@
         private TextBox txtBox;
         private RichTextBox richTextBox;
         private Button joinBtn;
+        private Button button2;
     }
 }
