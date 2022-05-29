@@ -139,13 +139,16 @@
             // btnText
             // 
             this.btnText.BackColor = System.Drawing.Color.Transparent;
+            this.btnText.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnText.BackgroundImage")));
+            this.btnText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnText.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnText.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnText.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
             this.btnText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnText.ForeColor = System.Drawing.Color.White;
+            this.btnText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnText.ForeColor = System.Drawing.Color.Black;
             this.btnText.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnText.Location = new System.Drawing.Point(1191, 51);
+            this.btnText.Location = new System.Drawing.Point(1190, 51);
             this.btnText.Name = "btnText";
             this.btnText.Size = new System.Drawing.Size(66, 64);
             this.btnText.TabIndex = 16;
