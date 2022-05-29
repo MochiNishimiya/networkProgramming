@@ -39,7 +39,7 @@
             this.btn_exit.BackColor = System.Drawing.Color.Transparent;
             this.btn_exit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_exit.ForeColor = System.Drawing.Color.Green;
-            this.btn_exit.Location = new System.Drawing.Point(251, 277);
+            this.btn_exit.Location = new System.Drawing.Point(279, 415);
             this.btn_exit.Margin = new System.Windows.Forms.Padding(5);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(341, 67);
@@ -47,14 +47,13 @@
             this.btn_exit.Text = "EXIT";
             this.btn_exit.UseVisualStyleBackColor = false;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
-//            this.btn_exit.MouseHover += new System.EventHandler(this.exitIntro);
             // 
             // btn_join
             // 
             this.btn_join.BackColor = System.Drawing.Color.Transparent;
             this.btn_join.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_join.ForeColor = System.Drawing.Color.Green;
-            this.btn_join.Location = new System.Drawing.Point(251, 200);
+            this.btn_join.Location = new System.Drawing.Point(279, 338);
             this.btn_join.Margin = new System.Windows.Forms.Padding(5);
             this.btn_join.Name = "btn_join";
             this.btn_join.Size = new System.Drawing.Size(341, 67);
@@ -62,14 +61,13 @@
             this.btn_join.Text = "JOIN";
             this.btn_join.UseVisualStyleBackColor = false;
             this.btn_join.Click += new System.EventHandler(this.btn_join_Click);
-    //        this.btn_join.MouseHover += new System.EventHandler(this.joinIntro);
             // 
             // btn_create
             // 
             this.btn_create.BackColor = System.Drawing.Color.Transparent;
             this.btn_create.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_create.ForeColor = System.Drawing.Color.Green;
-            this.btn_create.Location = new System.Drawing.Point(251, 122);
+            this.btn_create.Location = new System.Drawing.Point(279, 260);
             this.btn_create.Margin = new System.Windows.Forms.Padding(5);
             this.btn_create.Name = "btn_create";
             this.btn_create.Size = new System.Drawing.Size(341, 67);
@@ -77,7 +75,6 @@
             this.btn_create.Text = "CREATE";
             this.btn_create.UseVisualStyleBackColor = false;
             this.btn_create.Click += new System.EventHandler(this.btn_create_Click);
-    //        this.btn_create.MouseHover += new System.EventHandler(this.createIntro);
             // 
             // Dashboard
             // 
@@ -85,7 +82,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(814, 578);
+            this.ClientSize = new System.Drawing.Size(911, 578);
             this.Controls.Add(this.btn_create);
             this.Controls.Add(this.btn_join);
             this.Controls.Add(this.btn_exit);
