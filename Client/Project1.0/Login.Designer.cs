@@ -105,7 +105,6 @@
             this.btn_login.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_login.UseVisualStyleBackColor = false;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
-//            this.btn_login.MouseHover += new System.EventHandler(this.loginIntro);
             // 
             // btn_sigh
             // 
@@ -120,7 +119,6 @@
             this.btn_sigh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_sigh.UseVisualStyleBackColor = false;
             this.btn_sigh.Click += new System.EventHandler(this.btn_sigh_Click);
-//            this.btn_sigh.MouseHover += new System.EventHandler(this.createIntro);
             // 
             // label4
             // 
@@ -128,11 +126,11 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Gabriola", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.label4.Location = new System.Drawing.Point(-6, 9);
+            this.label4.Location = new System.Drawing.Point(-23, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(591, 294);
+            this.label4.Size = new System.Drawing.Size(626, 294);
             this.label4.TabIndex = 8;
-            this.label4.Text = "WELCOME TO\r\nE-LEARNING SPACE";
+            this.label4.Text = "WELCOME TO\r\nMOMIAN PLATFORM";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Login
