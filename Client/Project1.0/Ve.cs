@@ -293,6 +293,14 @@ namespace Project1._0
             MessageBox.Show("Hello, welcome to our app. I am knowing that you don't know how to use our excellent app :)) So I'm here to show you how to use. Select color that you want then select drawing tool relevant for you. And then draw :v Remember that other people in this room can see what you draw. ");
         }
 
+        private void txtBtn_Click(object sender, EventArgs e)
+        {
+            byte[] outStream = Encoding.UTF8.GetBytes("5\n" + username+": "+txtBox.Text + "\n" + "$");
+            connectServer.serverStream.Write(outStream, 0, outStream.Length);
+            connectServer.serverStream.Flush();
+            txtBox.Clear();
+        }
+
         private void validate(Bitmap bm, Stack<Point> sp, int x, int y, Color o_color, Color n_color)
         {
             Color cx = bm.GetPixel(x, y);
@@ -347,13 +355,28 @@ namespace Project1._0
                 connectServer.serverStream.Read(inStream, 0, inStream.Length);
                 Bitmap bmp;
                 byte[] data = del (inStream);
-                using (var ms = new MemoryStream(data))
+                string mess = Encoding.UTF8.GetString(inStream);
+                if (mess[0] == '#')
                 {
-                    bmp = new Bitmap(ms);
+                    int i = 1;
+                    string rmess = "";
+                    while (i < mess.Length)
+                    {
+                        char temp = mess[i];
+                        rmess += temp.ToString();
+                    }    
+                    box_chat.Text = box_chat.Text + Environment.NewLine + " >> " + rmess;
                 }
-                pic.Image = bmp;
-                bm = bmp;
-                g = Graphics.FromImage(bmp);
+                else
+                {
+                    using (var ms = new MemoryStream(data))
+                    {
+                        bmp = new Bitmap(ms);
+                    }
+                    pic.Image = bmp;
+                    bm = bmp;
+                    g = Graphics.FromImage(bmp);
+                }
             }
         }
 
