@@ -81,7 +81,7 @@ namespace Project1._0
                 }
                 if (readData == "False")
                 {
-                    MessageBox.Show("Ma phong khong ton tai hoac ban khong duoc phep vao phong.");
+                    MessageBox.Show("Room code is incorrect or you don't allow to join room. Please connect to admin for decentralization");
                     checkw = false;
                 }
             }

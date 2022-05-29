@@ -53,6 +53,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.pic = new System.Windows.Forms.PictureBox();
+            this.txtBtn = new System.Windows.Forms.Button();
+            this.txtBox = new System.Windows.Forms.TextBox();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.joinBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colorPicker)).BeginInit();
             this.panel3.SuspendLayout();
@@ -81,9 +85,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1370, 124);
+            this.panel1.Size = new System.Drawing.Size(1566, 165);
             this.panel1.TabIndex = 0;
             // 
             // sizebox
@@ -106,9 +109,10 @@
             "36",
             "48",
             "72"});
-            this.sizebox.Location = new System.Drawing.Point(1239, 12);
+            this.sizebox.Location = new System.Drawing.Point(1416, 16);
+            this.sizebox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sizebox.Name = "sizebox";
-            this.sizebox.Size = new System.Drawing.Size(45, 23);
+            this.sizebox.Size = new System.Drawing.Size(51, 28);
             this.sizebox.TabIndex = 19;
             this.sizebox.SelectedIndexChanged += new System.EventHandler(this.sizebox_SelectedIndexChanged);
             // 
@@ -116,17 +120,19 @@
             // 
             this.listFont.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.listFont.FormattingEnabled = true;
-            this.listFont.Location = new System.Drawing.Point(1106, 12);
+            this.listFont.Location = new System.Drawing.Point(1264, 16);
+            this.listFont.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listFont.Name = "listFont";
-            this.listFont.Size = new System.Drawing.Size(127, 23);
+            this.listFont.Size = new System.Drawing.Size(145, 28);
             this.listFont.TabIndex = 18;
             this.listFont.SelectedIndexChanged += new System.EventHandler(this.listFont_SelectedIndexChanged);
             // 
             // contentText
             // 
-            this.contentText.Location = new System.Drawing.Point(1106, 38);
+            this.contentText.Location = new System.Drawing.Point(1264, 51);
+            this.contentText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contentText.Name = "contentText";
-            this.contentText.Size = new System.Drawing.Size(178, 73);
+            this.contentText.Size = new System.Drawing.Size(203, 96);
             this.contentText.TabIndex = 17;
             this.contentText.Text = "";
             // 
@@ -139,10 +145,9 @@
             this.btnText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnText.ForeColor = System.Drawing.Color.White;
             this.btnText.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnText.Location = new System.Drawing.Point(1042, 38);
-            this.btnText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnText.Location = new System.Drawing.Point(1191, 51);
             this.btnText.Name = "btnText";
-            this.btnText.Size = new System.Drawing.Size(58, 48);
+            this.btnText.Size = new System.Drawing.Size(66, 64);
             this.btnText.TabIndex = 16;
             this.btnText.Text = "Text";
             this.btnText.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -152,18 +157,20 @@
             // boxsize
             // 
             this.boxsize.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.boxsize.Location = new System.Drawing.Point(488, 72);
+            this.boxsize.Location = new System.Drawing.Point(558, 98);
+            this.boxsize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxsize.Name = "boxsize";
-            this.boxsize.Size = new System.Drawing.Size(36, 27);
+            this.boxsize.Size = new System.Drawing.Size(41, 32);
             this.boxsize.TabIndex = 15;
             // 
             // dec
             // 
             this.dec.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dec.ForeColor = System.Drawing.Color.IndianRed;
-            this.dec.Location = new System.Drawing.Point(463, 72);
+            this.dec.Location = new System.Drawing.Point(529, 96);
+            this.dec.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dec.Name = "dec";
-            this.dec.Size = new System.Drawing.Size(24, 27);
+            this.dec.Size = new System.Drawing.Size(27, 36);
             this.dec.TabIndex = 14;
             this.dec.Text = "-";
             this.dec.UseVisualStyleBackColor = true;
@@ -173,9 +180,10 @@
             // 
             this.inc.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.inc.ForeColor = System.Drawing.Color.IndianRed;
-            this.inc.Location = new System.Drawing.Point(525, 72);
+            this.inc.Location = new System.Drawing.Point(600, 96);
+            this.inc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.inc.Name = "inc";
-            this.inc.Size = new System.Drawing.Size(24, 27);
+            this.inc.Size = new System.Drawing.Size(27, 36);
             this.inc.TabIndex = 13;
             this.inc.Text = "+";
             this.inc.UseVisualStyleBackColor = true;
@@ -190,10 +198,9 @@
             this.btclear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btclear.ForeColor = System.Drawing.Color.White;
             this.btclear.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btclear.Location = new System.Drawing.Point(1300, 55);
-            this.btclear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btclear.Location = new System.Drawing.Point(1486, 73);
             this.btclear.Name = "btclear";
-            this.btclear.Size = new System.Drawing.Size(58, 27);
+            this.btclear.Size = new System.Drawing.Size(66, 36);
             this.btclear.TabIndex = 11;
             this.btclear.Text = "Clear";
             this.btclear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -209,10 +216,9 @@
             this.btsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btsave.ForeColor = System.Drawing.Color.White;
             this.btsave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btsave.Location = new System.Drawing.Point(1300, 13);
-            this.btsave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btsave.Location = new System.Drawing.Point(1486, 17);
             this.btsave.Name = "btsave";
-            this.btsave.Size = new System.Drawing.Size(58, 27);
+            this.btsave.Size = new System.Drawing.Size(66, 36);
             this.btsave.TabIndex = 10;
             this.btsave.Text = "Save";
             this.btsave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -223,10 +229,9 @@
             // 
             this.colorPicker.Cursor = System.Windows.Forms.Cursors.Cross;
             this.colorPicker.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker.Image")));
-            this.colorPicker.Location = new System.Drawing.Point(12, 11);
-            this.colorPicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.colorPicker.Location = new System.Drawing.Point(14, 15);
             this.colorPicker.Name = "colorPicker";
-            this.colorPicker.Size = new System.Drawing.Size(439, 100);
+            this.colorPicker.Size = new System.Drawing.Size(502, 133);
             this.colorPicker.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.colorPicker.TabIndex = 9;
             this.colorPicker.TabStop = false;
@@ -242,10 +247,9 @@
             this.btnLine.ForeColor = System.Drawing.Color.White;
             this.btnLine.Image = ((System.Drawing.Image)(resources.GetObject("btnLine.Image")));
             this.btnLine.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLine.Location = new System.Drawing.Point(978, 38);
-            this.btnLine.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLine.Location = new System.Drawing.Point(1118, 51);
             this.btnLine.Name = "btnLine";
-            this.btnLine.Size = new System.Drawing.Size(58, 48);
+            this.btnLine.Size = new System.Drawing.Size(66, 64);
             this.btnLine.TabIndex = 7;
             this.btnLine.Text = "Line";
             this.btnLine.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -262,10 +266,9 @@
             this.btnRectangle.ForeColor = System.Drawing.Color.White;
             this.btnRectangle.Image = ((System.Drawing.Image)(resources.GetObject("btnRectangle.Image")));
             this.btnRectangle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRectangle.Location = new System.Drawing.Point(914, 38);
-            this.btnRectangle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRectangle.Location = new System.Drawing.Point(1045, 51);
             this.btnRectangle.Name = "btnRectangle";
-            this.btnRectangle.Size = new System.Drawing.Size(58, 48);
+            this.btnRectangle.Size = new System.Drawing.Size(66, 64);
             this.btnRectangle.TabIndex = 6;
             this.btnRectangle.Text = "Rec";
             this.btnRectangle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -282,10 +285,9 @@
             this.btnEllipse.ForeColor = System.Drawing.Color.White;
             this.btnEllipse.Image = ((System.Drawing.Image)(resources.GetObject("btnEllipse.Image")));
             this.btnEllipse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEllipse.Location = new System.Drawing.Point(850, 38);
-            this.btnEllipse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEllipse.Location = new System.Drawing.Point(971, 51);
             this.btnEllipse.Name = "btnEllipse";
-            this.btnEllipse.Size = new System.Drawing.Size(58, 48);
+            this.btnEllipse.Size = new System.Drawing.Size(66, 64);
             this.btnEllipse.TabIndex = 5;
             this.btnEllipse.Text = "Ellipse";
             this.btnEllipse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -296,10 +298,9 @@
             // 
             this.pickColor.BackColor = System.Drawing.Color.Black;
             this.pickColor.ForeColor = System.Drawing.Color.Black;
-            this.pickColor.Location = new System.Drawing.Point(483, 22);
-            this.pickColor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pickColor.Location = new System.Drawing.Point(552, 29);
             this.pickColor.Name = "pickColor";
-            this.pickColor.Size = new System.Drawing.Size(44, 36);
+            this.pickColor.Size = new System.Drawing.Size(50, 48);
             this.pickColor.TabIndex = 0;
             this.pickColor.UseVisualStyleBackColor = false;
             // 
@@ -310,10 +311,9 @@
             this.panel3.Controls.Add(this.btnFill);
             this.panel3.Controls.Add(this.btnPencil);
             this.panel3.Controls.Add(this.btnEraser);
-            this.panel3.Location = new System.Drawing.Point(562, 27);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(642, 36);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(282, 69);
+            this.panel3.Size = new System.Drawing.Size(322, 92);
             this.panel3.TabIndex = 8;
             // 
             // btnColor
@@ -326,10 +326,9 @@
             this.btnColor.ForeColor = System.Drawing.Color.White;
             this.btnColor.Image = ((System.Drawing.Image)(resources.GetObject("btnColor.Image")));
             this.btnColor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnColor.Location = new System.Drawing.Point(16, 10);
-            this.btnColor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnColor.Location = new System.Drawing.Point(18, 13);
             this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(58, 48);
+            this.btnColor.Size = new System.Drawing.Size(66, 64);
             this.btnColor.TabIndex = 1;
             this.btnColor.Text = "Color";
             this.btnColor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -346,10 +345,9 @@
             this.btnFill.ForeColor = System.Drawing.Color.White;
             this.btnFill.Image = ((System.Drawing.Image)(resources.GetObject("btnFill.Image")));
             this.btnFill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFill.Location = new System.Drawing.Point(80, 11);
-            this.btnFill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFill.Location = new System.Drawing.Point(91, 15);
             this.btnFill.Name = "btnFill";
-            this.btnFill.Size = new System.Drawing.Size(58, 48);
+            this.btnFill.Size = new System.Drawing.Size(66, 64);
             this.btnFill.TabIndex = 2;
             this.btnFill.Text = "Fill";
             this.btnFill.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -366,10 +364,9 @@
             this.btnPencil.ForeColor = System.Drawing.Color.White;
             this.btnPencil.Image = ((System.Drawing.Image)(resources.GetObject("btnPencil.Image")));
             this.btnPencil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPencil.Location = new System.Drawing.Point(144, 11);
-            this.btnPencil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPencil.Location = new System.Drawing.Point(165, 15);
             this.btnPencil.Name = "btnPencil";
-            this.btnPencil.Size = new System.Drawing.Size(58, 48);
+            this.btnPencil.Size = new System.Drawing.Size(66, 64);
             this.btnPencil.TabIndex = 3;
             this.btnPencil.Text = "Pencil";
             this.btnPencil.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -386,10 +383,9 @@
             this.btnEraser.ForeColor = System.Drawing.Color.White;
             this.btnEraser.Image = ((System.Drawing.Image)(resources.GetObject("btnEraser.Image")));
             this.btnEraser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEraser.Location = new System.Drawing.Point(208, 10);
-            this.btnEraser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEraser.Location = new System.Drawing.Point(238, 13);
             this.btnEraser.Name = "btnEraser";
-            this.btnEraser.Size = new System.Drawing.Size(58, 48);
+            this.btnEraser.Size = new System.Drawing.Size(66, 64);
             this.btnEraser.TabIndex = 4;
             this.btnEraser.Text = "Eraser";
             this.btnEraser.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -401,9 +397,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(1151, 8);
+            this.label1.Location = new System.Drawing.Point(1315, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.Size = new System.Drawing.Size(64, 23);
             this.label1.TabIndex = 20;
             this.label1.Text = "CODE: ";
             // 
@@ -413,10 +409,9 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 528);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(0, 704);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1370, 34);
+            this.panel2.Size = new System.Drawing.Size(1566, 45);
             this.panel2.TabIndex = 1;
             // 
             // button1
@@ -426,24 +421,22 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(1290, 4);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(1488, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(58, 27);
+            this.button1.Size = new System.Drawing.Size(66, 36);
             this.button1.TabIndex = 21;
-            this.button1.Text = "Exit";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.Text = "EXIT";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pic
             // 
-            this.pic.Location = new System.Drawing.Point(1, 115);
-            this.pic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pic.Location = new System.Drawing.Point(3, 171);
             this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(1370, 599);
+            this.pic.Size = new System.Drawing.Size(1339, 494);
             this.pic.TabIndex = 2;
             this.pic.TabStop = false;
             this.pic.Paint += new System.Windows.Forms.PaintEventHandler(this.pic_Paint);
@@ -452,15 +445,67 @@
             this.pic.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pic_MouseMove);
             this.pic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pic_MouseUp);
             // 
+            // txtBtn
+            // 
+            this.txtBtn.BackColor = System.Drawing.Color.Transparent;
+            this.txtBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
+            this.txtBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtBtn.ForeColor = System.Drawing.Color.DimGray;
+            this.txtBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.txtBtn.Location = new System.Drawing.Point(1488, 671);
+            this.txtBtn.Name = "txtBtn";
+            this.txtBtn.Size = new System.Drawing.Size(66, 28);
+            this.txtBtn.TabIndex = 22;
+            this.txtBtn.Text = "SEND";
+            this.txtBtn.UseVisualStyleBackColor = false;
+            // 
+            // txtBox
+            // 
+            this.txtBox.Location = new System.Drawing.Point(3, 671);
+            this.txtBox.Name = "txtBox";
+            this.txtBox.Size = new System.Drawing.Size(1479, 27);
+            this.txtBox.TabIndex = 23;
+            // 
+            // richTextBox
+            // 
+            this.richTextBox.Location = new System.Drawing.Point(1348, 171);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(206, 461);
+            this.richTextBox.TabIndex = 24;
+            this.richTextBox.Text = "";
+            // 
+            // joinBtn
+            // 
+            this.joinBtn.BackColor = System.Drawing.Color.DimGray;
+            this.joinBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.joinBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.joinBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
+            this.joinBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.joinBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.joinBtn.ForeColor = System.Drawing.Color.White;
+            this.joinBtn.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.joinBtn.Location = new System.Drawing.Point(1348, 638);
+            this.joinBtn.Name = "joinBtn";
+            this.joinBtn.Size = new System.Drawing.Size(207, 27);
+            this.joinBtn.TabIndex = 22;
+            this.joinBtn.Text = "JOIN CHATROOM";
+            this.joinBtn.UseVisualStyleBackColor = false;
+            // 
             // Ve
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 562);
+            this.ClientSize = new System.Drawing.Size(1566, 749);
+            this.Controls.Add(this.joinBtn);
+            this.Controls.Add(this.richTextBox);
+            this.Controls.Add(this.txtBox);
+            this.Controls.Add(this.txtBtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pic);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Ve";
             this.Text = "Drawing Space";
             this.Load += new System.EventHandler(this.Ve_Load);
@@ -472,6 +517,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -501,5 +547,9 @@
         private ComboBox sizebox;
         private Label label1;
         private Button button1;
+        private Button txtBtn;
+        private TextBox txtBox;
+        private RichTextBox richTextBox;
+        private Button joinBtn;
     }
 }

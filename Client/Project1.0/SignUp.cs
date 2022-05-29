@@ -67,12 +67,12 @@ namespace Project1._0
                     readData = "" + returndata;
                     if(readData == "False")
                     {
-                        MessageBox.Show("Tai khoan da ton tai");
+                        MessageBox.Show("existing account. Please select another username/password");
                         checkw = false;
                     }
                     if(readData == "True")
                     {
-                        MessageBox.Show("Dang ky thang cong. Hay ve trang login de dang nhap");
+                        MessageBox.Show("Success! Login to continue");
                         checkthread = true;
                         check = false;
                         break;

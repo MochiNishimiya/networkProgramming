@@ -78,7 +78,7 @@ namespace Project1._0
                 }
                 if (readData == "False")
                 {
-                    MessageBox.Show("Server bi loi, mong ban thong cam.");
+                    MessageBox.Show("SOS!!! Server Down. Please go back later");
                     checkw = false;
                 }
             }

@@ -74,7 +74,7 @@ namespace Project1._0
                 }
                 if (readData == "False")
                 {
-                    MessageBox.Show("Sai tai khoan hoac mat khau.");
+                    MessageBox.Show("Username or password is incorrect. Please double check");
                     checkw = false;
                 }
             }
