@@ -33,6 +33,7 @@ namespace Project1._0
             {
                 // Gửi thông tin login đến server
                 byte[] outStream = Encoding.UTF8.GetBytes("2\n" + box_username.Text + "\n" + box_pass.Text + "\n" + "$");
+                outStream = XOR(outStream, connectServer.key);
                 connectServer.serverStream.Write(outStream, 0, outStream.Length);
                 connectServer.serverStream.Flush();
 
@@ -63,6 +64,7 @@ namespace Project1._0
                 {
                     byte[] inStream = new byte[10025];
                     connectServer.serverStream.Read(inStream, 0, inStream.Length);
+                    inStream = XOR(inStream, connectServer.key);
                     string returndata = Encoding.UTF8.GetString(inStream).Replace("\0", string.Empty);
                     readData = "" + returndata;
                     if(readData == "False")
@@ -85,6 +87,19 @@ namespace Project1._0
             Program.lg.Show();
             this.Close();
         }
+        public byte[] XOR(byte[] data, byte[] key)
+        {
 
+            for (int i = 0, j = 0; i < data.Length; i++)
+
+            {
+
+                data[i] ^= key[j];
+
+                j = (++j < key.Length) ? j : 0;
+
+            }
+            return data;
+        }
     }
 }

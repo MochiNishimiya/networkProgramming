@@ -1,12 +1,13 @@
 using System.Net.Sockets;
 using System.Net;
-
+using System.Threading;
 namespace Project1._0
 {
     static class connectServer
     {
         public static NetworkStream serverStream = default(NetworkStream);
         public static TcpClient clientSocket;
+        public static byte[] key = new byte[16];
     }
 
     internal static class Program
@@ -24,6 +25,9 @@ namespace Project1._0
             connectServer.clientSocket = new TcpClient();
             connectServer.clientSocket.Connect(IPAddress.Parse("127.0.0.1"), 8080);   // Modified this
             connectServer.serverStream = connectServer.clientSocket.GetStream();
+
+            Thread.Sleep(1000);
+            connectServer.serverStream.Read(connectServer.key, 0, connectServer.key.Length);
 
             ApplicationConfiguration.Initialize();
             Application.Run(lg);

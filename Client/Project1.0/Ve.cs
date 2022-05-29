@@ -78,7 +78,7 @@ namespace Project1._0
         private void pic_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            if(paint)
+            if (paint)
             {
                 // Ellipse
                 if (index == 3)
@@ -101,7 +101,7 @@ namespace Project1._0
                 {
                     g.DrawString(contentText.Text, ff, drawBrush, cX, cY);
                 }
-            }    
+            }
         }
 
         private void btnPencil_Click(object sender, EventArgs e)
@@ -134,9 +134,9 @@ namespace Project1._0
 
         private void pic_MouseClick(object sender, MouseEventArgs e)
         {
-            if(index == 7)
+            if (index == 7)
             {
-                Point point = set_point(pic,e.Location);
+                Point point = set_point(pic, e.Location);
                 Fill(bm, point.X, point.Y, new_color);
                 run = true;
             }
@@ -147,11 +147,11 @@ namespace Project1._0
         {
             var sfd = new SaveFileDialog();
             sfd.Filter = "Image(*.jpg)|*.jpg|(*.*|*.*";
-            if(sfd.ShowDialog() == DialogResult.OK)
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
                 Bitmap btm = bm.Clone(new Rectangle(0, 0, pic.Width, pic.Height), bm.PixelFormat);
-                btm.Save(sfd.FileName,ImageFormat.Jpeg);
-            }    
+                btm.Save(sfd.FileName, ImageFormat.Jpeg);
+            }
         }
 
         private void btclear_Click(object sender, EventArgs e)
@@ -207,7 +207,7 @@ namespace Project1._0
 
         private void listFont_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ff = new Font(listFont.SelectedItem.ToString(), SizeFont);  
+            ff = new Font(listFont.SelectedItem.ToString(), SizeFont);
         }
 
         private void sizebox_SelectedIndexChanged(object sender, EventArgs e)
@@ -220,17 +220,17 @@ namespace Project1._0
         private void pic_MouseDown(object sender, MouseEventArgs e)
         {
             paint = true;
-            Py= e.Location;
+            Py = e.Location;
             cX = e.X;
             cY = e.Y;
         }
 
         private void pic_MouseMove(object sender, MouseEventArgs e)
         {
-            if(paint)
+            if (paint)
             {
                 // Pen
-                if(index == 1)
+                if (index == 1)
                 {
                     Px = e.Location;
                     g.DrawLine(P, Px, Py);
@@ -256,13 +256,13 @@ namespace Project1._0
         {
             paint = false;
 
-            sX = x - cX;    
+            sX = x - cX;
             sY = y - cY;
 
             // Ellipse
-            if(index == 3)
+            if (index == 3)
             {
-                g.DrawEllipse(P,cX,cY,sX,sY);
+                g.DrawEllipse(P, cX, cY, sX, sY);
                 //bm = (Bitmap)pic.Image;
             }
 
@@ -296,7 +296,7 @@ namespace Project1._0
         {
             float Px = 1f * pb.Image.Width / pb.Width;
             float Py = 1f * pb.Image.Height / pb.Height;
-            return new Point((int)(pt.X*Px),(int)(pt.Y*Py));
+            return new Point((int)(pt.X * Px), (int)(pt.Y * Py));
         }
 
         private void Guide(object sender, EventArgs e)
@@ -306,20 +306,21 @@ namespace Project1._0
 
         private void txtBtn_Click(object sender, EventArgs e)
         {
-            byte[] outStream = Encoding.UTF8.GetBytes("5\n" + username+": "+txtBox.Text + "\n" + "$");
+            byte[] outStream = Encoding.UTF8.GetBytes("5\n" + username + ": " + txtBox.Text + "\n" + "$");
             connectServer.serverStream.Write(outStream, 0, outStream.Length);
             connectServer.serverStream.Flush();
             txtBox.Clear();
+            box_chat.Text = box_chat.Text + Environment.NewLine + " >> " + username + ": " + txtBox.Text;
         }
 
         private void validate(Bitmap bm, Stack<Point> sp, int x, int y, Color o_color, Color n_color)
         {
             Color cx = bm.GetPixel(x, y);
-            if(cx == o_color)
+            if (cx == o_color)
             {
                 sp.Push(new Point(x, y));
                 bm.SetPixel(x, y, n_color);
-            }    
+            }
         }
 
         public void Fill(Bitmap bm, int x, int y, Color n_color)
@@ -330,27 +331,27 @@ namespace Project1._0
             bm.SetPixel(x, y, n_color);
             if (o_color == n_color) return;
 
-            while(picel.Count > 0)
+            while (picel.Count > 0)
             {
                 Point pt = picel.Pop();
-                if(pt.X>0 && pt.Y>0 && pt.X<bm.Width-1 && pt.Y<bm.Height-1)
-                    {
-                    validate(bm,picel,pt.X-1,pt.Y,o_color,n_color);
-                    validate(bm, picel, pt.X, pt.Y-1, o_color, n_color);
-                    validate(bm, picel, pt.X+1, pt.Y, o_color, n_color);
-                    validate(bm, picel, pt.X, pt.Y+1, o_color, n_color);
+                if (pt.X > 0 && pt.Y > 0 && pt.X < bm.Width - 1 && pt.Y < bm.Height - 1)
+                {
+                    validate(bm, picel, pt.X - 1, pt.Y, o_color, n_color);
+                    validate(bm, picel, pt.X, pt.Y - 1, o_color, n_color);
+                    validate(bm, picel, pt.X + 1, pt.Y, o_color, n_color);
+                    validate(bm, picel, pt.X, pt.Y + 1, o_color, n_color);
                 }
-            }    
+            }
         }
 
         public static byte[] del(byte[] input)
         {
-            int i = input.Length-1;
+            int i = input.Length - 1;
             while (input[i] == 0)
                 i--;
-            byte[] output = new byte[i+1];
+            byte[] output = new byte[i + 1];
             bool r = true;
-            for(int j=0;j<=i;j++)
+            for (int j = 0; j <= i; j++)
             {
                 output[j] = input[j];
             }
@@ -364,8 +365,9 @@ namespace Project1._0
                 connectServer.serverStream = clientSocket.GetStream();
                 byte[] inStream = new byte[20025];
                 connectServer.serverStream.Read(inStream, 0, inStream.Length);
+                inStream = XOR(inStream, connectServer.key);
                 Bitmap bmp;
-                byte[] data = del (inStream);
+                byte[] data = del(inStream);
                 string mess = Encoding.UTF8.GetString(inStream);
                 if (mess[0] == '#')
                 {
@@ -375,7 +377,7 @@ namespace Project1._0
                     {
                         char temp = mess[i];
                         rmess += temp.ToString();
-                    }    
+                    }
                     box_chat.Text = box_chat.Text + Environment.NewLine + " >> " + rmess;
                 }
                 else
@@ -408,11 +410,27 @@ namespace Project1._0
                     //Bitmap btm = (Bitmap)piclone.Image;
                     Bitmap btm = bm.Clone(new Rectangle(0, 0, pic.Width, pic.Height), bm.PixelFormat);
                     outStream = ImageToByte(btm);
+                    outStream = XOR(outStream, connectServer.key);
                     connectServer.serverStream.Write(outStream, 0, outStream.Length);
                     connectServer.serverStream.Flush();
                     run = false;
                 }
             }
+        }
+
+        public byte[] XOR(byte[] data, byte[] key)
+        {
+
+            for (int i = 0, j = 0; i < data.Length; i++)
+
+            {
+
+                data[i] ^= key[j];
+
+                j = (++j < key.Length) ? j : 0;
+
+            }
+            return data;
         }
     }
 }
