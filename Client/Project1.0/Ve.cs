@@ -355,10 +355,10 @@ namespace Project1._0
                 connectServer.serverStream = clientSocket.GetStream();
                 byte[] inStream = new byte[20025];
                 connectServer.serverStream.Read(inStream, 0, inStream.Length);
-                inStream = XOR(inStream, connectServer.key);
-                Bitmap bmp;
                 byte[] data = del(inStream);
-                string mess = Encoding.UTF8.GetString(inStream);
+                data = XOR(data, connectServer.key);
+                Bitmap bmp;
+                string mess = Encoding.UTF8.GetString(data);
                 if (mess[0] == '#')
                 {
                     int i = 1;
