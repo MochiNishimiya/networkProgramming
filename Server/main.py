@@ -16,9 +16,11 @@ print('Got connection from', addr)
 global ipList
 global vis
 global sList
+global keyList
 ipList = []
 idRoomList = []
 sList = []
+keyList = []
 vis = [0] * 1000    # room limited
 
 def xor(arr, key):
@@ -44,6 +46,9 @@ def run(server, addr):
 
             message = xor(dataComing[0], key)
             operate = message[0]
+
+            print(message)
+            print(chr(operate))
 
             if operate == ord('1'):  # Login
                 username = message.split(b'\n')[1].decode()
@@ -107,6 +112,7 @@ def run(server, addr):
                     ipList.append(addr)
                     idRoomList.append(id)
                     sList.append(server)
+                    keyList.append(key)
                     server.send(xor(str(roomId).encode(), key))
 
             elif operate == ord('4'):  # Join Room
@@ -115,18 +121,27 @@ def run(server, addr):
                 ipList.append(addr)
                 idRoomList.append(roomId)
                 sList.append(server)
+                keyList.append(key)
                 server.send(xor(b'True', key))
 
+            elif operate == ord('5'):
+                print('address:', addr)
+                print('ipList: ', ipList)
+                print('idRoomList: ', idRoomList)
+                chat = b'#' + message[2:-2]
+                for i in range(len(ipList)):
+                    if idRoomList[i] == roomId and (ipList[i][0] != addr[0] or ipList[i][1] != addr[1]):
+                        print(chat)
+                        sList[i].send(xor(chat, keyList[i]))
+
             elif message[:4] == b'\x89PNG':   # Drawing
-                print(message)
                 print('address:', addr)
                 print('ipList: ',ipList)
                 print('idRoomList: ',idRoomList)
                 bitmap = message
                 for i in range(len(ipList)):
                     if idRoomList[i] == roomId and (ipList[i][0] != addr[0] or ipList[i][1] != addr[1]):
-                        print(i)
-                        sList[i].send(xor(bitmap, key))
+                        sList[i].send(xor(bitmap, keyList[i]))
 
             else:
                 print(dataComing)
@@ -142,6 +157,7 @@ def run(server, addr):
             ipList.pop(i)
             idRoomList.pop(i)
             sList.pop(i)
+            keyList.pop(i)
             break
 
     print('Exiting...')
