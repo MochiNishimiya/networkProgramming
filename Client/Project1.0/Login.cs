@@ -59,12 +59,27 @@ namespace Project1._0
             }
         }
 
+        public static byte[] del(byte[] input)
+        {
+            int i = input.Length - 1;
+            while (input[i] == 0)
+                i--;
+            byte[] output = new byte[i + 1];
+            bool r = true;
+            for (int j = 0; j <= i; j++)
+            {
+                output[j] = input[j];
+            }
+            return output;
+        }
+
         private void getMessage()
         {
             while (true)
             {
                 byte[] inStream = new byte[10025];
                 connectServer.serverStream.Read(inStream, 0, inStream.Length);
+                inStream = del(inStream);
                 inStream = XOR(inStream, connectServer.key);
                 string returndata = Encoding.UTF8.GetString(inStream).Replace("\0", string.Empty);
                 readData = "" + returndata;

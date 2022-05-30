@@ -1,5 +1,6 @@
 using System.Drawing.Imaging;
 using System.Net.Sockets;
+using System.Text;
 
 namespace Project1._0
 {
