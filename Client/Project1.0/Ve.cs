@@ -11,6 +11,8 @@ namespace Project1._0
             InitializeComponent();
             this.Width = 1900;
             this.Height = 1080;
+            pic.Width = 1100;
+            pic.Height = 370;
             bm = new Bitmap(pic.Width, pic.Height);
             g = Graphics.FromImage(bm);
             g.Clear(Color.White);
@@ -297,10 +299,12 @@ namespace Project1._0
         private void txtBtn_Click(object sender, EventArgs e)
         {
             byte[] outStream = Encoding.UTF8.GetBytes("5\n" + username + ": " + txtBox.Text + "\n" + "$");
+            outStream = XOR(outStream, connectServer.key);
             connectServer.serverStream.Write(outStream, 0, outStream.Length);
             connectServer.serverStream.Flush();
-            txtBox.Clear();
+   
             box_chat.Text = box_chat.Text + Environment.NewLine + " >> " + username + ": " + txtBox.Text;
+            txtBox.Clear();
         }
 
         private void validate(Bitmap bm, Stack<Point> sp, int x, int y, Color o_color, Color n_color)
@@ -367,6 +371,7 @@ namespace Project1._0
                     {
                         char temp = mess[i];
                         rmess += temp.ToString();
+                        i++;
                     }
                     box_chat.Text = box_chat.Text + Environment.NewLine + " >> " + rmess;
                 }
