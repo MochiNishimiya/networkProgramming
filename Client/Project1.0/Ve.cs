@@ -302,7 +302,7 @@ namespace Project1._0
             outStream = XOR(outStream, connectServer.key);
             connectServer.serverStream.Write(outStream, 0, outStream.Length);
             connectServer.serverStream.Flush();
-   
+
             box_chat.Text = box_chat.Text + Environment.NewLine + " >> " + username + ": " + txtBox.Text;
             txtBox.Clear();
         }
@@ -394,6 +394,14 @@ namespace Project1._0
             return (byte[])converter.ConvertTo(img, typeof(byte[]));
         }
 
+        public static byte[] Combine(byte[] first, byte[] second)
+        {
+            byte[] ret = new byte[first.Length + second.Length];
+            Buffer.BlockCopy(first, 0, ret, 0, first.Length);
+            Buffer.BlockCopy(second, 0, ret, first.Length, second.Length);
+            return ret;
+        }
+
         public void sendMessage()
         {
             while (true)
@@ -401,10 +409,11 @@ namespace Project1._0
                 if (run)
                 {
                     //piclone.Image = pic.Image;
-                    Byte[] outStream = null;
+                    byte[] data = null;
                     //Bitmap btm = (Bitmap)piclone.Image;
                     Bitmap btm = bm.Clone(new Rectangle(0, 0, pic.Width, pic.Height), bm.PixelFormat);
-                    outStream = ImageToByte(btm);
+                    data = ImageToByte(btm);
+                    byte[] outStream = Combine(data, Encoding.UTF8.GetBytes("$"));
                     outStream = XOR(outStream, connectServer.key);
                     connectServer.serverStream.Write(outStream, 0, outStream.Length);
                     connectServer.serverStream.Flush();

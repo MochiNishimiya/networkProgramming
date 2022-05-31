@@ -4,9 +4,9 @@ import threading
 import random
 import time
 
-s = socket.socket()
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print("Socket successfully created")
-port = 8080
+port = 34214
 s.bind(('', port))
 print("socket binded to %s" % (port))
 s.listen(5)
@@ -42,27 +42,30 @@ def run(server, addr):
 
     while True:
         try:
-            dataComing = server.recvfrom(100000)
+            arrRecv = []
+            while 1:
+                dataComing = server.recv(2048)
+                message = xor(dataComing, key)
+                print(message)
+                arrRecv.append(message)
+                if message[len(message) - 1] == 36:
+                    break
 
-            message = xor(dataComing[0], key)
+            message = b''.join(arrRecv)[:-1]
             operate = message[0]
 
-            print(message)
-            print(chr(operate))
+            print('recv message: ', message)
 
             if operate == ord('1'):  # Login
                 username = message.split(b'\n')[1].decode()
                 password = message.split(b'\n')[2].decode()
-                print(message)
                 hashPass = hashlib.sha256(password.encode()).hexdigest()
                 authentication = open('log.txt', 'r').readlines()  # check authentication
 
                 stat = 0
                 for i, c in enumerate(authentication):
                     checkUser, checkPass = c.split(' ')
-                    print(checkUser, checkPass)
                     if (checkUser.strip() == username and checkPass.strip() == hashPass):
-                        print('True Authenticate')
                         server.send(xor(b'True', key))
                         stat = 1
                         break
@@ -84,7 +87,6 @@ def run(server, addr):
                 for i, c in enumerate(authentication):
                     checkUser, checkPass = c.split(' ')
                     if (checkUser == username):
-                        print('no')
                         server.send(xor(b'False', key))
                         stat = 0
                         break
@@ -96,7 +98,6 @@ def run(server, addr):
                     server.send(xor(b'True', key))
 
             elif operate == ord('3'):  # Create Room
-                print(addr[0], addr[1])
                 stat = 0
                 for ip in ipList:
                     if ip[0] == addr[0] and ip[1] == addr[1]:
@@ -116,7 +117,6 @@ def run(server, addr):
                     server.send(xor(str(roomId).encode(), key))
 
             elif operate == ord('4'):  # Join Room
-                print(message)
                 roomId = int(message.split(b'\n')[1])
                 ipList.append(addr)
                 idRoomList.append(roomId)
@@ -125,22 +125,21 @@ def run(server, addr):
                 server.send(xor(b'True', key))
 
             elif operate == ord('5'):
-                print('address:', addr)
-                print('ipList: ', ipList)
-                print('idRoomList: ', idRoomList)
-                chat = b'#' + message[2:-2]
+                chat = b'#' + message[2:-1]
                 for i in range(len(ipList)):
                     if idRoomList[i] == roomId and (ipList[i][0] != addr[0] or ipList[i][1] != addr[1]):
                         print(chat)
                         sList[i].send(xor(chat, keyList[i]))
 
             elif message[:4] == b'\x89PNG':   # Drawing
-                print('address:', addr)
-                print('ipList: ',ipList)
-                print('idRoomList: ',idRoomList)
                 bitmap = message
+                print(message)
+                print(addr)
+                print(ipList)
+                print(keyList)
                 for i in range(len(ipList)):
                     if idRoomList[i] == roomId and (ipList[i][0] != addr[0] or ipList[i][1] != addr[1]):
+                        print(ipList[i])
                         sList[i].send(xor(bitmap, keyList[i]))
 
             else:
@@ -167,11 +166,5 @@ while True:
     t = threading.Thread(target=run, args=(server, addr,))
     t.start()
 
-    s.close()
-    s = socket.socket()
-    port = 8080
-    s.bind(('', port))
-    s.listen(5)
-    print("socket is listening")
     server, addr = s.accept()
     print('Got connection from', addr)
